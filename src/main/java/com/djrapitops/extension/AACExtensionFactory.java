@@ -27,15 +27,15 @@ import com.djrapitops.plan.extension.DataExtension;
 import java.util.Optional;
 
 /**
- * Factory for DataExtension.
+ * Factory for AdvancedAntiCheat DataExtension.
  *
  * @author Rsl1122
  */
-public class NewExtensionFactory {
+public class AACExtensionFactory {
 
     private boolean isAvailable() {
         try {
-            Class.forName("");
+            Class.forName("me.konsolas.aac.AAC");
             return true;
         } catch (ClassNotFoundException e) {
             return false;
@@ -44,7 +44,7 @@ public class NewExtensionFactory {
 
     public Optional<DataExtension> createExtension() {
         if (isAvailable()) {
-            return Optional.of(new NewExtension());
+            return Optional.of(new AACExtension());
         }
         return Optional.empty();
     }
