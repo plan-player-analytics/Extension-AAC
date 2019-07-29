@@ -70,11 +70,9 @@ public class AACStorage {
             )) {
                 UUID serverUUID = queryService.getServerUUID().orElseThrow(IllegalStateException::new);
                 queryService.execute("ALTER TABLE plan_aac_hack_table ADD " +
-                        (sqlite ? "COLUMN " : "") +
-                        "server_uuid varchar(36) NOT NULL DEFAULT ?", statement -> {
-                    statement.setString(1, serverUUID.toString());
-                    statement.execute();
-                });
+                                (sqlite ? "COLUMN " : "") +
+                                "server_uuid varchar(36) NOT NULL DEFAULT '" + serverUUID.toString() + "'",
+                        PreparedStatement::execute);
             }
             if (!commonQueries.doesDBHaveTableColumn(
                     "plan_aac_hack_table", "date"
@@ -150,8 +148,8 @@ public class AACStorage {
                 .orElseThrow(NotReadyException::new);
         final String sql = "SELECT COUNT(1) as count" +
                 " FROM plan_aac_hack_table" +
-                " AND plan_aac_hack_table.uuid=?" +
-                " AND plan_aac_hack_table.server_uuid=?";
+                " WHERE uuid=?" +
+                " AND server_uuid=?";
         return queryService.query(sql, statement -> {
             statement.setString(1, playerUUID.toString());
             statement.setString(2, serverUUID.toString());

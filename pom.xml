@@ -6,7 +6,7 @@
 
     <groupId>com.djrapitops</groupId>
     <artifactId>Extension-AAC</artifactId>
-    <version>4.0.5-R0.1</version>
+    <version>4.0.5-R0.3</version>
     <build>
         <plugins>
             <plugin>
