@@ -95,7 +95,7 @@ public class AACStorage {
 
     private void removePlayer(UUID playerUUID) {
         queryService.execute(
-                "REMOVE FROM plan_aac_hack_table WHERE uuid=?",
+                "DELETE FROM plan_aac_hack_table WHERE uuid=?",
                 statement -> {
                     statement.setString(1, playerUUID.toString());
                     statement.execute();
