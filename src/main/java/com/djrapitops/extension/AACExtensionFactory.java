@@ -36,6 +36,7 @@ public class AACExtensionFactory {
     private boolean isAvailable() {
         try {
             Class.forName("me.konsolas.aac.AAC");
+            Class.forName("me.konsolas.aac.api.PlayerViolationCommandEvent");
             return true;
         } catch (ClassNotFoundException e) {
             return false;
