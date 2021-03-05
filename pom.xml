@@ -23,7 +23,6 @@
 
     <repositories>
         <!-- Platforms -->
-
         <repository>
             <id>spigot-repo</id>
             <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
@@ -42,16 +41,16 @@
         <!--<url>https://repo.velocitypowered.com/snapshots/</url>-->
         <!--</repository>-->
         <repository>
-            <id>jitpack</id>
-            <url>https://jitpack.io</url>
+            <id>plan-repo</id>
+            <url>https://repo.playeranalytics.net/releases</url>
         </repository>
     </repositories>
 
     <dependencies>
         <dependency> <!-- Plan API -->
-            <groupId>com.github.plan-player-analytics</groupId>
-            <artifactId>Plan</artifactId>
-            <version>5.2.1068</version>
+            <groupId>com.djrapitops</groupId>
+            <artifactId>plan-api</artifactId>
+            <version>5.2-R0.1</version>
             <scope>provided</scope>
         </dependency>
 
@@ -109,6 +108,13 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <distributionManagement>
+        <repository>
+            <id>plan-repo</id>
+            <url>https://repo.playeranalytics.net/releases</url>
+        </repository>
+    </distributionManagement>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
