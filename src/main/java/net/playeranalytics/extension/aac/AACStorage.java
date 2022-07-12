@@ -20,7 +20,7 @@
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
     THE SOFTWARE.
 */
-package com.djrapitops.extension;
+package net.playeranalytics.extension.aac;
 
 import com.djrapitops.plan.extension.NotReadyException;
 import com.djrapitops.plan.query.CommonQueries;

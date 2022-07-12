@@ -20,33 +20,33 @@
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
     THE SOFTWARE.
 */
-package com.djrapitops.extension;
+package net.playeranalytics.extension.aac;
 
 import com.djrapitops.plan.extension.DataExtension;
-import com.djrapitops.plan.extension.extractor.ExtensionExtractor;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+
+import java.util.Optional;
 
 /**
- * Test for the implementation of the new extension
+ * Factory for AdvancedAntiCheat DataExtension.
  *
  * @author Rsl1122
  */
-class ExtensionImplementationTest {
+public class AACExtensionFactory {
 
-    private ExtensionExtractor extractor;
-
-    @BeforeEach
-    void prepareExtractor() {
-        DataExtension extension = new AACExtension(true);
-        extractor = new ExtensionExtractor(extension);
+    private boolean isAvailable() {
+        try {
+            Class.forName("me.konsolas.aac.AAC");
+            Class.forName("me.konsolas.aac.api.PlayerViolationCommandEvent");
+            return true;
+        } catch (ClassNotFoundException e) {
+            return false;
+        }
     }
 
-    @Test
-    @DisplayName("API is implemented correctly")
-    void noImplementationErrors() {
-        extractor.validateAnnotations();
+    public Optional<DataExtension> createExtension() {
+        if (isAvailable()) {
+            return Optional.of(new AACExtension());
+        }
+        return Optional.empty();
     }
-
 }
